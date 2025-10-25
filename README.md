@@ -1,97 +1,88 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# RnNotesOffline
 
-# Getting Started
+Hey! This is my **offline-first Notes App** built with React Native.  
+The idea was to create a simple, fully functional app that works **even without the internet**.  
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## What it does
+- Add notes with **title and content**.
+- **Edit existing notes** anytime.
+- **Delete notes** with confirmation to prevent accidental loss.
+- Works completely **offline**, storing all notes locally using AsyncStorage.
+- Smooth navigation between screens and a clean, modern UI.
+- Notes display **creation date**.
+- Friendly empty state when no notes exist.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+---
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## How I built it
 
-```sh
-# Using npm
-npm start
+1. **Project Setup**
+   - Initialized a React Native project using `npx @react-native-community/cli init`.
+   - Installed necessary packages: `AsyncStorage`, `React Navigation`, `react-native-uuid`, `react-native-gesture-handler`, `react-native-screens`.
 
-# OR using Yarn
-yarn start
-```
+2. **Navigation**
+   - Created `AppNavigator.js` with **stack navigation** for Notes List and Note Editor screens.
 
-## Step 2: Build and run your app
+3. **Storage & State**
+   - Created `noteStorage.js` for AsyncStorage helper functions.
+   - Built a custom hook `useNotes.js` to handle **add, edit, delete, and fetch notes** with state management using React hooks.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+4. **Notes List Screen**
+   - Created `NotesListScreen.js`:
+     - Displays notes in a **card layout** with shadows.
+     - Floating **add button** to create a new note.
+     - Confirmation alert on delete.
+     - Shows creation date and a friendly message when empty.
 
-### Android
+5. **Note Editor Screen**
+   - Created `NoteEditorScreen.js`:
+     - Add/edit notes with **title and content inputs**.
+     - Styled rounded inputs and a modern **Save button**.
+     - Keyboard-aware view for iOS.
+     - Validation to ensure title is not empty.
 
-```sh
-# Using npm
-npm run android
+6. **Polish & Enhancements**
+   - Floating add button with shadow.
+   - Notes cards with shadow and date.
+   - Friendly empty state with emoji.
+   - Notes reload immediately after adding/editing.
+   - Modular folder structure for easy maintenance.
 
-# OR using Yarn
-yarn android
-```
+---
 
-### iOS
+## Folder Structure
+RnNotesOffline/
+├─ src/
+│ ├─ components/ # Reusable components (if any)
+│ ├─ hooks/ # Custom hooks (useNotes.js)
+│ ├─ navigation/ # Stack navigation setup
+│ ├─ screens/ # NotesListScreen.js, NoteEditorScreen.js
+│ └─ storage/ # noteStorage.js (AsyncStorage helper)
+├─ App.js # Entry point
+├─ package.json
+├─ README.md
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+---
 
-```sh
-bundle install
-```
+## How to run it
 
-Then, and every time you update your native dependencies, run:
+1. Clone the repository:
 
-```sh
-bundle exec pod install
-```
+git clone <https://github.com/Sukshith27/rn-notes-offline>
+cd RnNotesOffline
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
 
-```sh
-# Using npm
-npm run ios
+2. Install dependencies:
+npm install
 
-# OR using Yarn
-yarn ios
-```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+3. Run on Android:
+npx react-native run-android
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+4. Run on iOS (macOS only):
+npx pod-install ios
+npx react-native run-ios
