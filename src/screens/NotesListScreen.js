@@ -63,5 +63,19 @@ const styles = StyleSheet.create({
   container: { flex: 1, padding: 10 },
   noteCard: { padding: 15, backgroundColor: '#f2f2f2', borderRadius: 10, marginBottom: 10 },
   noteHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 5 },
-
+  title: { fontWeight: 'bold', fontSize: 16 },
+  delete: { fontSize: 18 },
+  addBtn: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    backgroundColor: '#007AFF',
+    width: 55,
+    height: 55,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  addText: { fontSize: 28, color: '#fff' },
+  emptyText: { textAlign: 'center', marginTop: 20, fontSize: 16, color: '#666' },
 });
